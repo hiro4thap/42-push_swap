@@ -19,7 +19,7 @@ INCS = -Iinc/push_swap.h
 #INCS_BONUS = -Iinc/push_swap_bonus.h 
 
 SRC = main.c \
-	  validation.c
+	  validations.c
 
 #SRC_BONUS
 
