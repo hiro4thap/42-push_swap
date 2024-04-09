@@ -6,7 +6,7 @@
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:33:48 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/09 12:28:07 by hiono            ###   ########.fr       */
+/*   Updated: 2024/04/09 17:13:30 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,12 @@ static int	is_str_int(char *str)
 	return (1);
 }
 
-static int	is_str_digit(char *str)
+static int	is_str_number(char *str)
 {
+	if (*str == '-')
+		str++;
+	if (!*str)
+		return (0);
 	while (*str)
 	{
 		if (!ft_isdigit(*str))
@@ -42,7 +46,7 @@ int	is_av_int(int ac, char **av)
 	i = 1;
 	while (i < ac)
 	{
-		if (!is_str_digit(av[i]) || !is_str_int(av[i]))
+		if (!is_str_number(av[i]) || !is_str_int(av[i]))
 			return (0);
 		i++;
 	}

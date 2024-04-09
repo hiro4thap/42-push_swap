@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   radix_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:36:06 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/09 17:02:38 by hiono            ###   ########.fr       */
+/*   Created: 2024/04/09 17:01:33 by hiono             #+#    #+#             */
+/*   Updated: 2024/04/09 17:50:38 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../inc/push_swap.h"
 
-# include "../libft/libft.h"
-# include "../ft_printf/ft_printf.h"
-
-typedef struct s_stack
+int	get_maxdiv(int *s, int len)
 {
-	int	top;
-	int	*istack;
-}				t_stack;
+	int	div;
+	int	i;
 
-int		is_av_int(int ac, char **av);
-int		is_unique(int ac, char **av);
+	div = 1;
+	while (1)
+	{
+		i = 0;
+		while (-10 < s[i] / div && s[i] / div < 10 && i < len)
+		{
+			i++;
+		}
+		if (i == len)
+			return (div);
+		div *= 10;
+	}
+}
 
-void	swap(t_stack *s);
-void	push(t_stack *s1, t_stack *s2);
-void	rotate(t_stack *s);
-void	rrotate(t_stack *s);
-void	radix_sort(t_stack a, t_stack b);
+void	radix_sort(t_stack a, t_stack b)
+{
+	int	max_div;
 
-#endif
+	max_div = get_maxdiv(a.istack, a.top + 1);
+	ft_printf("max_div:%d\n", max_div);
+	(void)b;
+}
