@@ -6,7 +6,7 @@
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:24:40 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/10 17:03:47 by hiono            ###   ########.fr       */
+/*   Updated: 2024/04/10 19:08:55 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ int	main(int ac, char *av[])
 	}
 	a = init_sa(ac - 1, args);
 	b = init_sb(ac - 1);
-	//print_stacks(a, b);
-	//ft_printf("---operations---\n");
+	print_stacks(a, b);
+	ft_printf("---operations---\n");
 	turk_sort(a, b);
-	//print_stacks(a, b);
+	print_stacks(a, b);
 	free(a);
 	free(b);
 	if (ac == 2)
