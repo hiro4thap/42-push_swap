@@ -1,45 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   init_stacks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 13:30:42 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/10 15:37:06 by hiono            ###   ########.fr       */
+/*   Created: 2024/04/10 15:39:22 by hiono             #+#    #+#             */
+/*   Updated: 2024/04/10 15:39:54 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-// do nothing if less than 2 elements.
-// ss = sa and sb
-void	swap(t_stack *s)
+t_stack	*init_sa(int len, char **av)
 {
-	int	tmp;
+	int		i;
+	t_stack	*a;
 
-	if (s->top < 1)
-		return ;
-	tmp = s->istack[s->top];
-	s->istack[s->top] = s->istack[s->top - 1];
-	s->istack[s->top - 1] = tmp;
+	a = malloc(1 * sizeof(t_stack));
+	a->istack = malloc(len * sizeof(int));
+	i = 0;
+	while (i < len)
+	{
+		a->istack[i] = ft_atoi(av[len - 1 - i]);
+		i++;
+	}
+	a->top = i - 1;
+	return (a);
 }
 
-void	sa(t_stack *a)
+t_stack	*init_sb(int len)
 {
-	swap(a);
-	ft_printf("sa\n");
-}
+	t_stack	*b;
 
-void	sb(t_stack *b)
-{
-	swap(b);
-	ft_printf("sb\n");
-}
-
-void	ss(t_stack *a, t_stack *b)
-{
-	swap(a);
-	swap(b);
-	ft_printf("ss\n");
+	b = malloc(1 * sizeof(t_stack));
+	b->istack = malloc(len * sizeof(int));
+	b->top = -1;
+	return (b);
 }
