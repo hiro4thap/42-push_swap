@@ -6,7 +6,7 @@
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:33:48 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/10 13:44:51 by hiono            ###   ########.fr       */
+/*   Updated: 2024/04/10 15:06:56 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,32 +39,32 @@ static int	is_str_number(char *str)
 	return (1);
 }
 
-int	is_args_int(int ac, char **av)
+int	is_args_int(int len, char **args)
 {
 	int	i;
 
-	i = 1;
-	while (i < ac)
+	i = 0;
+	while (i < len)
 	{
-		if (!is_str_number(av[i]) || !is_str_int(av[i]))
+		if (!is_str_number(args[i]) || !is_str_int(args[i]))
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int	is_args_unique(int ac, char **av)
+int	is_args_unique(int len, char **args)
 {
 	int	i;
 	int	j;
 
-	i = 1;
-	while (i < ac)
+	i = 0;
+	while (i < len)
 	{
 		j = i + 1;
-		while (j < ac)
+		while (j < len)
 		{
-			if (ft_atoi(av[i]) == ft_atoi(av[j]))
+			if (ft_atoi(args[i]) == ft_atoi(args[j]))
 				return (0);
 			j++;
 		}

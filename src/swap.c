@@ -6,7 +6,7 @@
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:30:42 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/10 13:36:25 by hiono            ###   ########.fr       */
+/*   Updated: 2024/04/10 14:08:06 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,18 @@ void	swap(t_stack *s)
 void	sa(t_stack *a)
 {
 	swap(a);
-	ft_printf("sa");
+	ft_printf("sa\n");
 }
 
 void	sb(t_stack *b)
 {
 	swap(b);
-	ft_printf("sb");
+	ft_printf("sb\n");
 }
 
 void	ss(t_stack *a, t_stack *b)
 {
 	swap(a);
 	swap(b);
-	ft_printf("ss");
+	ft_printf("ss\n");
 }

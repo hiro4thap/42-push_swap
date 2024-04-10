@@ -6,7 +6,7 @@
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:42:34 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/10 13:42:36 by hiono            ###   ########.fr       */
+/*   Updated: 2024/04/10 14:08:41 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,18 @@ void	rrotate(t_stack *s)
 void	rra(t_stack *a)
 {
 	rrotate(a);
-	ft_printf("rra");
+	ft_printf("rra\n");
 }
 
 void	rrb(t_stack *b)
 {
 	rrotate(b);
-	ft_printf("rrb");
+	ft_printf("rrb\n");
 }
 
 void	rrr(t_stack *a, t_stack *b)
 {
 	rrotate(a);
 	rrotate(b);
-	ft_printf("rrr");
+	ft_printf("rrr\n");
 }

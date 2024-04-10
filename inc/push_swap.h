@@ -6,7 +6,7 @@
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:36:06 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/10 13:49:18 by hiono            ###   ########.fr       */
+/*   Updated: 2024/04/10 15:14:23 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ typedef struct s_stack
 	int	*istack;
 }				t_stack;
 
-int		is_args_int(int ac, char **av);
-int		is_args_unique(int ac, char **av);
+int		is_args_int(int len, char **args);
+int		is_args_unique(int len, char **args);
 
 void	sa(t_stack *a);
 void	sb(t_stack *b);
