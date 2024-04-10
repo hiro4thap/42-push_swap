@@ -6,7 +6,7 @@
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:33:48 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/09 17:13:30 by hiono            ###   ########.fr       */
+/*   Updated: 2024/04/10 13:44:51 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	is_str_number(char *str)
 	return (1);
 }
 
-int	is_av_int(int ac, char **av)
+int	is_args_int(int ac, char **av)
 {
 	int	i;
 
@@ -53,7 +53,7 @@ int	is_av_int(int ac, char **av)
 	return (1);
 }
 
-int	is_unique(int ac, char **av)
+int	is_args_unique(int ac, char **av)
 {
 	int	i;
 	int	j;

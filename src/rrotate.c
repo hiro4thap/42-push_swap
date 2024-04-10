@@ -1,41 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   radix_sort.c                                       :+:      :+:    :+:   */
+/*   rrotate.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 17:01:33 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/09 17:50:38 by hiono            ###   ########.fr       */
+/*   Created: 2024/04/10 13:42:34 by hiono             #+#    #+#             */
+/*   Updated: 2024/04/10 13:42:36 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-int	get_maxdiv(int *s, int len)
+// shift down from top all elements by 1 
+void	rrotate(t_stack *s)
 {
-	int	div;
 	int	i;
+	int	tmp;
 
-	div = 1;
-	while (1)
+	if (s->top < 1)
+		return ;
+	i = 0;
+	tmp = s->istack[0];
+	while (i < s->top)
 	{
-		i = 0;
-		while (-10 < s[i] / div && s[i] / div < 10 && i < len)
-		{
-			i++;
-		}
-		if (i == len)
-			return (div);
-		div *= 10;
+		s->istack[i] = s->istack[i + 1];
+		i++;
 	}
+	s->istack[i] = tmp;
+	return ;
 }
 
-void	radix_sort(t_stack a, t_stack b)
+void	rra(t_stack *a)
 {
-	int	max_div;
+	rrotate(a);
+	ft_printf("rra");
+}
 
-	max_div = get_maxdiv(a.istack, a.top + 1);
-	ft_printf("max_div:%d\n", max_div);
-	(void)b;
+void	rrb(t_stack *b)
+{
+	rrotate(b);
+	ft_printf("rrb");
+}
+
+void	rrr(t_stack *a, t_stack *b)
+{
+	rrotate(a);
+	rrotate(b);
+	ft_printf("rrr");
 }

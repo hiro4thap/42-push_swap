@@ -20,8 +20,11 @@ INCS = -Iinc/push_swap.h
 
 SRC = main.c \
 		validations.c \
-		operations.c \
-		radix_sort.c
+		swap.c \
+		push.c \
+		rotate.c \
+		rrotate.c \
+		turk_sort.c
 
 #SRC_BONUS
 

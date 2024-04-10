@@ -6,7 +6,7 @@
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:24:40 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/09 18:27:45 by hiono            ###   ########.fr       */
+/*   Updated: 2024/04/10 13:45:25 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	main(int ac, char *av[])
 
 	if (ac == 1)
 		exit (1);
-	if (!is_av_int(ac, av) || !is_unique(ac, av))
+	if (!is_args_int(ac, av) || !is_args_unique(ac, av))
 	{
 		ft_printf("Error\n");
 		exit(1);
@@ -87,7 +87,7 @@ int	main(int ac, char *av[])
 	a = init_sa(ac, av);
 	b = init_sb(ac);
 	test(a, b);
-	radix_sort(*a, *b);
+	turk_sort(*a, *b);
 	free(a);
 	free(b);
 	return (1);

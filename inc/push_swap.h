@@ -6,7 +6,7 @@
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:36:06 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/09 17:02:38 by hiono            ###   ########.fr       */
+/*   Updated: 2024/04/10 13:49:18 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,20 @@ typedef struct s_stack
 	int	*istack;
 }				t_stack;
 
-int		is_av_int(int ac, char **av);
-int		is_unique(int ac, char **av);
+int		is_args_int(int ac, char **av);
+int		is_args_unique(int ac, char **av);
 
-void	swap(t_stack *s);
-void	push(t_stack *s1, t_stack *s2);
-void	rotate(t_stack *s);
-void	rrotate(t_stack *s);
-void	radix_sort(t_stack a, t_stack b);
+void	sa(t_stack *a);
+void	sb(t_stack *b);
+void	ss(t_stack *a, t_stack *b);
+void	pa(t_stack *a, t_stack *b);
+void	pb(t_stack *b, t_stack *a);
+void	ra(t_stack *a);
+void	rb(t_stack *b);
+void	rr(t_stack *a, t_stack *b);
+void	rra(t_stack *a);
+void	rrb(t_stack *b);
+void	rrr(t_stack *a, t_stack *b);
+void	turk_sort(t_stack a, t_stack b);
 
 #endif
