@@ -6,7 +6,7 @@
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:36:06 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/11 17:45:30 by hiono            ###   ########.fr       */
+/*   Updated: 2024/04/11 18:29:50 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,20 @@ void	rrr(t_stack *a, t_stack *b);
 t_stack	*init_sa(int len, char **av);
 t_stack	*init_sb(int len);
 
-int		is_sorted_asc(t_stack *s);
-int		is_sorted_dsc(t_stack *s);
 void	turk_sort(t_stack *a, t_stack *b);
 
 int		get_min_idx(t_stack *s);
 int		get_target_idxa(int value, t_stack *a);
 int		get_target_idxb(int value, t_stack *b);
 
+t_operation	get_op(t_stack *a, t_stack *b, int idxa, int idxb);
+t_operation	get_cheap_op_pb(t_stack *a, t_stack *b);
+t_operation	get_cheap_op_pa(t_stack *a, t_stack *b);
+void	execute_op(t_stack *a, t_stack *b, t_operation op);
+
+void	sort_two_asc(t_stack *a);
+void	pb3(t_stack *a, t_stack *b);
+void	sort_three_asc(t_stack *a);
+void	sort_three_desc(t_stack *b);
 
 #endif
