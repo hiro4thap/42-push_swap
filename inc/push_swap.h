@@ -6,7 +6,7 @@
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:36:06 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/10 17:35:00 by hiono            ###   ########.fr       */
+/*   Updated: 2024/04/11 17:45:30 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,10 @@ t_stack	*init_sb(int len);
 int		is_sorted_asc(t_stack *s);
 int		is_sorted_dsc(t_stack *s);
 void	turk_sort(t_stack *a, t_stack *b);
+
+int		get_min_idx(t_stack *s);
+int		get_target_idxa(int value, t_stack *a);
+int		get_target_idxb(int value, t_stack *b);
+
 
 #endif

@@ -25,7 +25,8 @@ SRC = main.c \
 		rotate.c \
 		rrotate.c \
 		turk_sort.c \
-		init_stacks.c
+		init_stacks.c \
+		handle_stack.c
 
 #SRC_BONUS
 

@@ -6,7 +6,7 @@
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:01:33 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/10 21:05:43 by hiono            ###   ########.fr       */
+/*   Updated: 2024/04/11 17:48:02 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,6 @@ int	is_sorted_asc(t_stack *s)
 	while (i < s->top)
 	{
 		if (s->istack[i] < s->istack[i + 1])
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	is_sorted_dsc(t_stack *s)
-{
-	int	i;
-
-	i = 0;
-	while (i < s->top)
-	{
-		if (s->istack[i] > s->istack[i + 1])
 			return (0);
 		i++;
 	}
@@ -73,80 +59,6 @@ void	sort_three_desc(t_stack *b)
 		sb(b);
 }
 
-int	get_idx_min(t_stack *a)
-{
-	int	i;
-
-	i = a->top;
-	while (0 < i)
-	{
-		if(a->istack[i - 1] < a->istack[i])
-			return (i);
-		i--;
-	}
-	return (i);
-}
-
-// return index of the target (next bigger) value in a
-int	get_idxa(int value, t_stack *a)
-{
-	int	idxa;
-	int	i;
-
-	idxa = get_idx_min(a);
-	if (a->istack[idxa] < value || value < a->istack[(idxa - 1) % (a->top + 1)])
-		return (idxa);
-	i = a->top;
-	idxa = -1;
-	while (0 <= i)
-	{
-		if (value < a->istack[i] && 0 < idxa)
-			return (idxa);
-		if (a->istack[i] < value)
-			idxa = i;
-		i--;
-	}
-	//ft_printf("value: %d idxa:%d\n", value, idxa);
-	return (idxa);
-}
-
-int	get_idx_max(t_stack *b)
-{
-	int	i;
-
-	i = 0;
-	while (i < b->top)
-	{
-		if(b->istack[i + 1] < b->istack[i])
-			return (i);
-		i++;
-	}
-	return (i);
-}
-
-// return index of the target (next smaller) value in b
-int	get_idxb(int value, t_stack *b)
-{
-	int	idxb;
-	int	i;
-
-	idxb = get_idx_max(b);
-	if (b->istack[idxb] < value || value < b->istack[(idxb + 1) % (b->top + 1)])
-		return (idxb);
-	i = 0;
-	idxb = -1;
-	while (i <= b->top)
-	{
-		if (value < b->istack[i] && 0 < idxb)
-			return (idxb);
-		if (b->istack[i] < value)
-			idxb = i;
-		i++;
-	}
-	//ft_printf("value: %d idxb:%d\n", value, idxb);
-	return (idxb);
-}
-
 t_operation	get_op(t_stack *a, t_stack *b, int idxa, int idxb)
 {
 	t_operation	op;
@@ -155,6 +67,7 @@ t_operation	get_op(t_stack *a, t_stack *b, int idxa, int idxb)
 	op.c_rra = 0;
 	op.c_rb = 0;
 	op.c_rrb = 0;
+	//ft_printf("a->top:%d b->top:%d idxa:%d idxb:%d\n", a->top, b->top, idxa, idxb);
 	if (a->top / 2 <= idxa)
 		op.c_ra = a->top - idxa;
 	else
@@ -167,22 +80,42 @@ t_operation	get_op(t_stack *a, t_stack *b, int idxa, int idxb)
 	return (op);
 }	
 
-t_operation	get_cheap_op(t_stack *a, t_stack *b)
+t_operation	get_cheap_op_pb(t_stack *a, t_stack *b)
 {
 	t_operation	cheap_op;
 	t_operation	tmp;
 	int			idxa;
 	int			idxb;
 
-	idxa = a->top;
-	while (0 <= idxa)
+	idxa = 0;
+	while (idxa <= a->top)
 	{
-		idxb = get_idxb(a->istack[idxa], b);
+		idxb = get_target_idxb(a->istack[idxa], b);
 		tmp = get_op(a, b, idxa, idxb);
 		//ft_printf("ra:%d rra:%d rb:%d rrb:%d sum:%d\n", tmp.c_ra, tmp.c_rra, tmp.c_rb, tmp.c_rrb, tmp.c_sum);
-		if (idxa == a->top || tmp.c_sum < cheap_op.c_sum)
+		if (idxa == 0 || tmp.c_sum < cheap_op.c_sum)
 			cheap_op = tmp;
-		idxa--;
+		idxa++;
+	}
+	return (cheap_op);
+}
+
+t_operation	get_cheap_op_pa(t_stack *a, t_stack *b)
+{
+	t_operation	cheap_op;
+	t_operation	tmp;
+	int			idxa;
+	int			idxb;
+
+	idxb = 0;
+	while (idxb <= b->top)
+	{
+		idxa = get_target_idxa(b->istack[idxb], a);
+		tmp = get_op(a, b, idxa, idxb);
+		//ft_printf("ra:%d rra:%d rb:%d rrb:%d sum:%d\n", tmp.c_ra, tmp.c_rra, tmp.c_rb, tmp.c_rrb, tmp.c_sum);
+		if (idxb == 0 || tmp.c_sum < cheap_op.c_sum)
+			cheap_op = tmp;
+		idxb++;
 	}
 	return (cheap_op);
 }
@@ -214,7 +147,7 @@ void	turk_sort(t_stack *a, t_stack *b)
 	sort_three_desc(b);
 	while (2 < a->top)
 	{
-		cheap_op = get_cheap_op(a, b);
+		cheap_op = get_cheap_op_pb(a, b);
 		//ft_printf("cheap ra:%d rra:%d rb:%d rrb:%d\n", cheap_op.c_ra, cheap_op.c_rra, cheap_op.c_rb, cheap_op.c_rrb);
 		execute_op(a, b, cheap_op);
 		pb(b, a);
@@ -223,8 +156,10 @@ void	turk_sort(t_stack *a, t_stack *b)
 	sort_three_asc(a);
 	while (0 <= b->top)
 	{
-		cheap_op = get_cheap_op(b, a);
+		cheap_op = get_cheap_op_pa(a, b);
+		//ft_printf("cheap ra:%d rra:%d rb:%d rrb:%d\n", cheap_op.c_ra, cheap_op.c_rra, cheap_op.c_rb, cheap_op.c_rrb);
 		execute_op(a, b, cheap_op);
 		pa(a, b);
 	}
+	execute_op(a, b ,get_op(a, b, get_min_idx(a), -1));
 }
