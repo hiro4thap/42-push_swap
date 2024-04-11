@@ -6,7 +6,7 @@
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:01:33 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/11 18:30:34 by hiono            ###   ########.fr       */
+/*   Updated: 2024/04/11 18:57:56 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	turk_sort(t_stack *a, t_stack *b)
 {
 	t_operation	cheap_op;
 
-	if (a->top == 0)
+	if (a->top == 0) //TODO:add is_sorted and done nothing
 		return;
 	else if (a->top == 1)
 	{
