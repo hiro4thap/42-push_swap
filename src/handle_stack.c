@@ -19,7 +19,7 @@ int	is_sorted(t_stack *s)
 	i = 0;
 	while (i < s->top)
 	{
-		if (s->istack[i] < s->istack[i + 1])
+		if (s->istk[i] < s->istk[i + 1])
 			return (0);
 		i++;
 	}
@@ -35,7 +35,7 @@ int	get_min_idx(t_stack *s)
 	res = 0;
 	while (i <= s->top)
 	{
-		if (s->istack[i] < s->istack[res])
+		if (s->istk[i] < s->istk[res])
 			res = i;
 		i++;
 	}
@@ -51,7 +51,7 @@ int	get_max_idx(t_stack *s)
 	res = 0;
 	while (i <= s->top)
 	{
-		if (s->istack[res] < s->istack[i])
+		if (s->istk[res] < s->istk[i])
 			res = i;
 		i++;
 	}
@@ -65,13 +65,13 @@ int	get_target_idxa(int value, t_stack *a)
 	int	i;
 
 	idxa = get_min_idx(a);
-	if (value < a->istack[idxa] || a->istack[(idxa + 1) % (a->top + 1)] < value)
+	if (value < a->istk[idxa] || a->istk[(idxa + 1) % (a->top + 1)] < value)
 		return (idxa);
 	i = 0;
 	idxa = -1;
 	while (i <= a->top)
 	{
-		if (value < a->istack[i] && (idxa == -1 || a->istack[i] < a->istack[idxa]))
+		if (value < a->istk[i] && (idxa == -1 || a->istk[i] < a->istk[idxa]))
 			idxa = i;
 		i++;
 	}
@@ -85,13 +85,13 @@ int	get_target_idxb(int value, t_stack *b)
 	int	i;
 
 	idxb = get_max_idx(b);
-	if (b->istack[idxb] < value || value < b->istack[(idxb + 1) % (b->top + 1)])
+	if (b->istk[idxb] < value || value < b->istk[(idxb + 1) % (b->top + 1)])
 		return (idxb);
 	i = 0;
 	idxb = -1;
 	while (i <= b->top)
 	{
-		if (b->istack[i] < value && (idxb == -1 || b->istack[idxb] < b->istack[i]))
+		if (b->istk[i] < value && (idxb == -1 || b->istk[idxb] < b->istk[i]))
 			idxb = i;
 		i++;
 	}

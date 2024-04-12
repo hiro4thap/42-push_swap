@@ -61,7 +61,7 @@ t_operation	get_cheap_op_pb(t_stack *a, t_stack *b)
 	idxa = 0;
 	while (idxa <= a->top)
 	{
-		idxb = get_target_idxb(a->istack[idxa], b);
+		idxb = get_target_idxb(a->istk[idxa], b);
 		tmp = get_op_to_top(a, b, idxa, idxb);
 		if (idxa == 0 || tmp.c_sum < cheap_op.c_sum)
 			cheap_op = tmp;
@@ -80,7 +80,7 @@ t_operation	get_cheap_op_pa(t_stack *a, t_stack *b)
 	idxb = 0;
 	while (idxb <= b->top)
 	{
-		idxa = get_target_idxa(b->istack[idxb], a);
+		idxa = get_target_idxa(b->istk[idxb], a);
 		tmp = get_op_to_top(a, b, idxa, idxb);
 		if (idxb == 0 || tmp.c_sum < cheap_op.c_sum)
 			cheap_op = tmp;

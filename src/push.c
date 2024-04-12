@@ -19,7 +19,7 @@ void	push(t_stack *s1, t_stack *s2)
 	if (s2->top < 0)
 		return ;
 	s1->top++;
-	s1->istack[s1->top] = s2->istack[s2->top];
+	s1->istk[s1->top] = s2->istk[s2->top];
 	s2->top--;
 }
 

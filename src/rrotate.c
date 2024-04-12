@@ -21,13 +21,13 @@ void	rrotate(t_stack *s)
 	if (s->top < 1)
 		return ;
 	i = 0;
-	tmp = s->istack[0];
+	tmp = s->istk[0];
 	while (i < s->top)
 	{
-		s->istack[i] = s->istack[i + 1];
+		s->istk[i] = s->istk[i + 1];
 		i++;
 	}
-	s->istack[i] = tmp;
+	s->istk[i] = tmp;
 	return ;
 }
 

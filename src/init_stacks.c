@@ -18,11 +18,11 @@ t_stack	*init_sa(int len, char **av)
 	t_stack	*a;
 
 	a = malloc(1 * sizeof(t_stack));
-	a->istack = malloc(len * sizeof(int));
+	a->istk = malloc(len * sizeof(int));
 	i = 0;
 	while (i < len)
 	{
-		a->istack[i] = ft_atoi(av[len - 1 - i]);
+		a->istk[i] = ft_atoi(av[len - 1 - i]);
 		i++;
 	}
 	a->top = i - 1;
@@ -34,7 +34,7 @@ t_stack	*init_sb(int len)
 	t_stack	*b;
 
 	b = malloc(1 * sizeof(t_stack));
-	b->istack = malloc(len * sizeof(int));
+	b->istk = malloc(len * sizeof(int));
 	b->top = -1;
 	return (b);
 }

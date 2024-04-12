@@ -14,7 +14,7 @@
 
 void	sort_two_asc(t_stack *a)
 {
-	if (a->istack[0] < a->istack[1])
+	if (a->istk[0] < a->istk[1])
 		sa(a);
 }
 
@@ -34,20 +34,20 @@ void	sort_under_three_asc(t_stack *a)
 		sort_two_asc(a);
 		return ;
 	}
-	if (a->istack[0] < a->istack[1] && a->istack[2] < a->istack[1])
+	if (a->istk[0] < a->istk[1] && a->istk[2] < a->istk[1])
 		rra(a);
-	else if (a->istack[0] < a->istack[2] && a->istack[1] < a->istack[2])
+	else if (a->istk[0] < a->istk[2] && a->istk[1] < a->istk[2])
 		ra(a);
-	if (a->istack[1] < a->istack[2])
+	if (a->istk[1] < a->istk[2])
 		sa(a);
 }
 
 void	sort_three_desc(t_stack *b)
 {
-	if (b->istack[1] < b->istack[0] && b->istack[1] < b->istack[2])
+	if (b->istk[1] < b->istk[0] && b->istk[1] < b->istk[2])
 		rrb(b);
-	else if (b->istack[2] < b->istack[0] && b->istack[2] < b->istack[1])
+	else if (b->istk[2] < b->istk[0] && b->istk[2] < b->istk[1])
 		rb(b);
-	if (b->istack[2] < b->istack[1])
+	if (b->istk[2] < b->istk[1])
 		sb(b);
 }

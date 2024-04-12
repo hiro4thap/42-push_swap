@@ -6,7 +6,7 @@
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:36:06 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/12 16:16:32 by hiono            ###   ########.fr       */
+/*   Updated: 2024/04/12 16:27:16 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 typedef struct s_stack
 {
 	int	top;
-	int	*istack; //TODO:shorten name??
+	int	*istk;
 }				t_stack;
 
-typedef struct s_operation //TODO:shorten name?
+typedef struct s_operation
 {
 	int	idx;
 	int	c_ra;

@@ -20,9 +20,9 @@ void	swap(t_stack *s)
 
 	if (s->top < 1)
 		return ;
-	tmp = s->istack[s->top];
-	s->istack[s->top] = s->istack[s->top - 1];
-	s->istack[s->top - 1] = tmp;
+	tmp = s->istk[s->top];
+	s->istk[s->top] = s->istk[s->top - 1];
+	s->istk[s->top - 1] = tmp;
 }
 
 void	sa(t_stack *a)
