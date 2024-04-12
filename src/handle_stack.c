@@ -6,11 +6,25 @@
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 15:36:36 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/11 17:48:20 by hiono            ###   ########.fr       */
+/*   Updated: 2024/04/12 15:38:39 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
+
+int	is_sorted(t_stack *s)
+{
+	int	i;
+
+	i = 0;
+	while (i < s->top)
+	{
+		if (s->istack[i] < s->istack[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 int	get_min_idx(t_stack *s)
 {
@@ -21,7 +35,7 @@ int	get_min_idx(t_stack *s)
 	res = 0;
 	while (i <= s->top)
 	{
-		if(s->istack[i] < s->istack[res])
+		if (s->istack[i] < s->istack[res])
 			res = i;
 		i++;
 	}
@@ -37,7 +51,7 @@ int	get_max_idx(t_stack *s)
 	res = 0;
 	while (i <= s->top)
 	{
-		if(s->istack[res] < s->istack[i])
+		if (s->istack[res] < s->istack[i])
 			res = i;
 		i++;
 	}
@@ -61,7 +75,6 @@ int	get_target_idxa(int value, t_stack *a)
 			idxa = i;
 		i++;
 	}
-	//ft_printf("value: %d idxa:%d\n", value, idxa);
 	return (idxa);
 }
 

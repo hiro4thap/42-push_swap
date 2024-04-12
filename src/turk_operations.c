@@ -6,20 +6,27 @@
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 18:25:54 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/11 18:31:29 by hiono            ###   ########.fr       */
+/*   Updated: 2024/04/12 16:11:12 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-t_operation	get_op(t_stack *a, t_stack *b, int idxa, int idxb)
+void	init_op(t_operation *op)
+{
+	op->c_ra = 0;
+	op->c_rra = 0;
+	op->c_rb = 0;
+	op->c_rrb = 0;
+	op->c_rr = 0;
+	op->c_rrr = 0;
+}
+
+t_operation	get_op_to_top(t_stack *a, t_stack *b, int idxa, int idxb)
 {
 	t_operation	op;
 
-	op.c_ra = 0;
-	op.c_rra = 0;
-	op.c_rb = 0;
-	op.c_rrb = 0;
+	init_op(&op);
 	if (a->top / 2 <= idxa)
 		op.c_ra = a->top - idxa;
 	else
@@ -28,9 +35,21 @@ t_operation	get_op(t_stack *a, t_stack *b, int idxa, int idxb)
 		op.c_rb = b->top - idxb;
 	else
 		op.c_rrb = idxb + 1;
-	op.c_sum = op.c_ra + op.c_rra + op.c_rb + op.c_rrb;
+	while (0 < op.c_ra && 0 < op.c_rb)
+	{
+		op.c_rr++;
+		op.c_ra--;
+		op.c_rb--;
+	}
+	while (0 < op.c_rra && 0 < op.c_rrb)
+	{
+		op.c_rrr++;
+		op.c_rra--;
+		op.c_rrb--;
+	}
+	op.c_sum = op.c_ra + op.c_rra + op.c_rb + op.c_rrb + op.c_rr + op.c_rrr;
 	return (op);
-}	
+}
 
 t_operation	get_cheap_op_pb(t_stack *a, t_stack *b)
 {
@@ -43,7 +62,7 @@ t_operation	get_cheap_op_pb(t_stack *a, t_stack *b)
 	while (idxa <= a->top)
 	{
 		idxb = get_target_idxb(a->istack[idxa], b);
-		tmp = get_op(a, b, idxa, idxb);
+		tmp = get_op_to_top(a, b, idxa, idxb);
 		if (idxa == 0 || tmp.c_sum < cheap_op.c_sum)
 			cheap_op = tmp;
 		idxa++;
@@ -62,7 +81,7 @@ t_operation	get_cheap_op_pa(t_stack *a, t_stack *b)
 	while (idxb <= b->top)
 	{
 		idxa = get_target_idxa(b->istack[idxb], a);
-		tmp = get_op(a, b, idxa, idxb);
+		tmp = get_op_to_top(a, b, idxa, idxb);
 		if (idxb == 0 || tmp.c_sum < cheap_op.c_sum)
 			cheap_op = tmp;
 		idxb++;
@@ -72,18 +91,6 @@ t_operation	get_cheap_op_pa(t_stack *a, t_stack *b)
 
 void	execute_op(t_stack *a, t_stack *b, t_operation op)
 {
-	while (0 < op.c_ra && 0 < op.c_rb)
-	{
-		rr(a, b);
-		op.c_ra--;
-		op.c_rb--;
-	}
-	while (0 < op.c_rra && 0 < op.c_rrb)
-	{
-		rrr(a, b);
-		op.c_rra--;
-		op.c_rrb--;
-	}
 	while (0 < op.c_ra--)
 		ra(a);
 	while (0 < op.c_rra--)
@@ -92,4 +99,8 @@ void	execute_op(t_stack *a, t_stack *b, t_operation op)
 		rb(b);
 	while (0 < op.c_rrb--)
 		rrb(b);
+	while (0 < op.c_rr--)
+		rr(a, b);
+	while (0 < op.c_rrr--)
+		rrr(a, b);
 }
