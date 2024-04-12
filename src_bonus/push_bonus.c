@@ -6,7 +6,7 @@
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:35:47 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/12 17:29:46 by hiono            ###   ########.fr       */
+/*   Updated: 2024/04/12 19:18:11 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,9 @@ void	push(t_stack *s1, t_stack *s2)
 void	pa(t_stack *a, t_stack *b)
 {
 	push(a, b);
-	ft_printf("pa\n");
 }
 
 void	pb(t_stack *b, t_stack *a)
 {
 	push(b, a);
-	ft_printf("pb\n");
 }

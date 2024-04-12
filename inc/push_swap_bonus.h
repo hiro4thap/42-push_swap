@@ -6,7 +6,7 @@
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 17:26:05 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/12 17:26:17 by hiono            ###   ########.fr       */
+/*   Updated: 2024/04/12 18:57:59 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft/libft.h"
 # include "../ft_printf/ft_printf.h"
+# include "./get_next_line.h"
 
 typedef struct s_stack
 {
@@ -36,6 +37,7 @@ typedef struct s_operation
 
 int			is_args_int(int len, char **args);
 int			is_args_unique(int len, char **args);
+int			is_valid_inst(char *isnt);
 
 void		sa(t_stack *a);
 void		sb(t_stack *b);
@@ -52,20 +54,6 @@ void		rrr(t_stack *a, t_stack *b);
 t_stack		*init_sa(int len, char **av);
 t_stack		*init_sb(int len);
 
-void		turk_sort(t_stack *a, t_stack *b);
-
-int			get_min_idx(t_stack *s);
-int			get_target_idxa(int value, t_stack *a);
-int			get_target_idxb(int value, t_stack *b);
-
 int			is_sorted(t_stack *a);
-t_operation	get_op_to_top(t_stack *a, t_stack *b, int idxa, int idxb);
-t_operation	get_cheap_op_pb(t_stack *a, t_stack *b);
-t_operation	get_cheap_op_pa(t_stack *a, t_stack *b);
-void		execute_op(t_stack *a, t_stack *b, t_operation op);
-
-void		pb3(t_stack *a, t_stack *b);
-void		sort_under_three_asc(t_stack *a);
-void		sort_three_desc(t_stack *b);
 
 #endif

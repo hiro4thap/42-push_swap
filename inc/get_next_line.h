@@ -1,42 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 13:30:42 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/12 19:18:25 by hiono            ###   ########.fr       */
+/*   Created: 2024/03/13 11:04:42 by hiono             #+#    #+#             */
+/*   Updated: 2024/04/12 19:04:52 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap_bonus.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-// do nothing if less than 2 elements.
-// ss = sa and sb
-void	swap(t_stack *s)
-{
-	int	tmp;
+# include <stdlib.h>
+# include <unistd.h>
 
-	if (s->top < 1)
-		return ;
-	tmp = s->istk[s->top];
-	s->istk[s->top] = s->istk[s->top - 1];
-	s->istk[s->top - 1] = tmp;
-}
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 100
+# endif
 
-void	sa(t_stack *a)
-{
-	swap(a);
-}
+size_t	gnl_ft_strlen(const char *str);
+char	*gnl_ft_substr(char const *s, unsigned int start, size_t len);
+char	*gnl_ft_strjoin(char *s1, char const *s2);
+char	*gnl_ft_strchr(const char *s, int c);
+char	*get_next_line(int fd);
 
-void	sb(t_stack *b)
-{
-	swap(b);
-}
-
-void	ss(t_stack *a, t_stack *b)
-{
-	swap(a);
-	swap(b);
-}
+#endif

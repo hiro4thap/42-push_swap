@@ -36,11 +36,10 @@ SRC_BONUS = main_bonus.c \
 		push_bonus.c \
 		rotate_bonus.c \
 		rrotate_bonus.c \
-		turk_sort_bonus.c \
 		init_stacks_bonus.c \
-		handle_stack_bonus.c \
 		utils_bonus.c \
-		turk_operations_bonus.c
+		get_next_line.c \
+		get_next_line_utils.c
 
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
 SRCS_BONUS = $(addprefix $(SRC_BONUS_DIR), $(SRC_BONUS))
