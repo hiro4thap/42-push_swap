@@ -6,17 +6,11 @@
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:24:40 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/12 16:10:12 by hiono            ###   ########.fr       */
+/*   Updated: 2024/04/13 15:44:50 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
-
-void	display_error(char *msg)
-{
-	ft_printf(msg);
-	exit(1);
-}
 
 int	get_ac(char **args)
 {
@@ -69,8 +63,9 @@ int	main(int ac, char *av[])
 		args = &av[1];
 	if (!is_args_int(ac - 1, args) || !is_args_unique(ac - 1, args))
 	{
-		display_error("Error\n");
+		ft_printf("Error\n");
 		free_args(ac, args);
+		return (1);
 	}
 	a = init_sa(ac - 1, args);
 	b = init_sb(ac - 1);

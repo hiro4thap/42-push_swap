@@ -6,11 +6,11 @@
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:06:34 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/12 19:07:48 by hiono            ###   ########.fr       */
+/*   Updated: 2024/04/13 15:22:35 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/get_next_line.h"
+#include "../inc/push_swap_bonus.h"
 
 size_t	gnl_ft_strlen(const char *str)
 {

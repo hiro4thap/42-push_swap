@@ -6,7 +6,7 @@
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 17:26:05 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/12 18:57:59 by hiono            ###   ########.fr       */
+/*   Updated: 2024/04/13 15:47:35 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 
 # include "../libft/libft.h"
 # include "../ft_printf/ft_printf.h"
-# include "./get_next_line.h"
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 100
+# endif
 
 typedef struct s_stack
 {
@@ -34,6 +37,12 @@ typedef struct s_operation
 	int	c_rrr;
 	int	c_sum;
 }				t_operation;
+
+size_t		gnl_ft_strlen(const char *str);
+char		*gnl_ft_substr(char const *s, unsigned int start, size_t len);
+char		*gnl_ft_strjoin(char *s1, char const *s2);
+char		*gnl_ft_strchr(const char *s, int c);
+char		*get_next_line(int fd);
 
 int			is_args_int(int len, char **args);
 int			is_args_unique(int len, char **args);
@@ -54,6 +63,7 @@ void		rrr(t_stack *a, t_stack *b);
 t_stack		*init_sa(int len, char **av);
 t_stack		*init_sb(int len);
 
+void		execute_inst(t_stack *a, t_stack *b, char *inst);
 int			is_sorted(t_stack *a);
 
 #endif

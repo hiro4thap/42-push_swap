@@ -6,7 +6,7 @@
 /*   By: hiono <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:33:48 by hiono             #+#    #+#             */
-/*   Updated: 2024/04/12 19:15:13 by hiono            ###   ########.fr       */
+/*   Updated: 2024/04/13 15:24:08 by hiono            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,16 +76,16 @@ int	is_args_unique(int len, char **args)
 int	is_valid_inst(char *inst)
 {
 	if (!ft_strncmp(inst, "pa\n", 4)
-			|| !ft_strncmp(inst, "pb\n", 4)
-			|| !ft_strncmp(inst, "sa\n", 4)
-			|| !ft_strncmp(inst, "sb\n", 4)
-			|| !ft_strncmp(inst, "ss\n", 4)
-			|| !ft_strncmp(inst, "ra\n", 4)
-			|| !ft_strncmp(inst, "rb\n", 4)
-			|| !ft_strncmp(inst, "rr\n", 4)
-			|| !ft_strncmp(inst, "rra\n", 5)
-			|| !ft_strncmp(inst, "rrb\n", 5)
-			|| !ft_strncmp(inst, "rrr\n", 5))
+		|| !ft_strncmp(inst, "pb\n", 4)
+		|| !ft_strncmp(inst, "sa\n", 4)
+		|| !ft_strncmp(inst, "sb\n", 4)
+		|| !ft_strncmp(inst, "ss\n", 4)
+		|| !ft_strncmp(inst, "ra\n", 4)
+		|| !ft_strncmp(inst, "rb\n", 4)
+		|| !ft_strncmp(inst, "rr\n", 4)
+		|| !ft_strncmp(inst, "rra\n", 5)
+		|| !ft_strncmp(inst, "rrb\n", 5)
+		|| !ft_strncmp(inst, "rrr\n", 5))
 		return (1);
 	return (0);
 }
